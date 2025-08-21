@@ -1,0 +1,75 @@
+# Docker Networking:
+=====================================
+
+
+
+
+## Networking Concepts:
+=================================
+Docker networking allows containers to communicate with each other and host system. 
+1. **bridge networking: **Two scenarios**
+Container one connects to container two,  Container one has isolation from container two. When you create a container. **Docker creates veth, That is docker0**. It allows docker container subnet to communicate with host. It is called bridge networking and it is default networking in docker. If there is no veth/docker0 the containerized application is not reachable from internet. So users will not be able to access application.
+ **Other ways of networking in docker**
+2. **Host networking** -  the container will directly use network of host, bind eth-network of your host.  Whoever has access to host have access to container. Least secure way of networking in docker.
+3. **Overlay networking** -  when you need to create a network that is common in all the host of Kubernetes/swarm cluster.
+
+**Scenarios Questions Challanges to Abhi from Students**
+Q1: For suppose I have created a container with default bridge network or host network or custom network, but later stage I want to change the network to different one. Can I change without deleting the container?
+
+Q2: Host is communicating with different containers with different networks. Can we make the same among the containers? What I mean is can only a container in the same host have multiple networks so that it will communicate with different containers?
+
+
+# Lab Pratcise:
+======================================
+
+# Docker Networking:
+=============
+
+docker run -d --name login nginx:latest
+
+docker exec -it login /bin/bash
+apt update
+apt-get install iputils ping -y
+apt-get install net-tools -y
+ping -v
+
+
+docker ru -d --name logout nginx:latest
+docker exec -it login /bin/bash
+apt update
+apt-get install iputils ping -y
+apt-get install net-tools -y
+ping -v
+
+docker inspect login
+docker inspect login
+
+can i container access to Another Conatiner 
+logged into login container access the ping the logout Container IIP
+
+docker network ls
+docker network rm test
+
+docker network create secure-network
+
+docker run -d --name finance --network=secure-network  nginx:latest
+
+
+docker exec -it login /bin/bash
+
+
+docker exec -it login /bin/bash
+
+docker exec -it finance /bin/bash
+==> ping to login container check the 
+
+==
+Finally
+
+docker run -d --name host-demo --network=host nginx:latest
+
+docker ps
+
+docker inspect host-demo 
+
+
