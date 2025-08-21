@@ -1,15 +1,19 @@
 # Docker Networking:
 =====================================
-
-
+ 
+**Docker networking allows containers to communicate with each other and host system.**
+ 1) **bridge networking**
+ 2) **Host networking** 
+ 3) **Overlay networking** 
 
 
 ## Networking Concepts:
 =================================
-Docker networking allows containers to communicate with each other and host system. 
+
 1. **bridge networking: **Two scenarios**
 Container one connects to container two,  Container one has isolation from container two. When you create a container. **Docker creates veth, That is docker0**. It allows docker container subnet to communicate with host. It is called bridge networking and it is default networking in docker. If there is no veth/docker0 the containerized application is not reachable from internet. So users will not be able to access application.
  **Other ways of networking in docker**
+
 2. **Host networking** -  the container will directly use network of host, bind eth-network of your host.  Whoever has access to host have access to container. Least secure way of networking in docker.
 3. **Overlay networking** -  when you need to create a network that is common in all the host of Kubernetes/swarm cluster.
 
@@ -25,51 +29,43 @@ Q2: Host is communicating with different containers with different networks. Can
 # Docker Networking:
 =============
 
-docker run -d --name login nginx:latest
+* Create a container with name Login and Logged into the container check the IP
+  - docker run -d --name login nginx:latest
+  - docker exec -it login /bin/bash
+  - apt update
+  - apt-get install iputils ping -y
+  - apt-get install net-tools -y
+  - ping -v
 
-docker exec -it login /bin/bash
-apt update
-apt-get install iputils ping -y
-apt-get install net-tools -y
-ping -v
+* Create a container with name Logout and Logged into the container check the IP
+ - docker ru -d --name logout nginx:latest
+ - docker exec -it login /bin/bash
+ - apt update
+ - apt-get install iputils ping -y
+ - apt-get install net-tools -y
+ - ping -v
 
+ - docker inspect login
+ - docker inspect logout
 
-docker ru -d --name logout nginx:latest
-docker exec -it login /bin/bash
-apt update
-apt-get install iputils ping -y
-apt-get install net-tools -y
-ping -v
-
-docker inspect login
-docker inspect login
-
-can i container access to Another Conatiner 
-logged into login container access the ping the logout Container IIP
-
-docker network ls
-docker network rm test
-
-docker network create secure-network
-
-docker run -d --name finance --network=secure-network  nginx:latest
+**can i container access to Another Conatiner logged into login container access the ping the logout Container IP**
 
 
-docker exec -it login /bin/bash
+ - docker network ls
+ - docker network rm test
 
+* docker network create secure-network
 
-docker exec -it login /bin/bash
+ - docker run -d --name finance --network=secure-network  nginx:latest
+ - docker exec -it login /bin/bash
+ - docker exec -it logout /bin/bash
+ - docker exec -it finance /bin/bash
+     - ping to login container check the 
 
-docker exec -it finance /bin/bash
-==> ping to login container check the 
+* Finally check Default name of **Host_Network** Acess
 
-==
-Finally
-
-docker run -d --name host-demo --network=host nginx:latest
-
-docker ps
-
-docker inspect host-demo 
+  - docker run -d --name host-demo --network=host nginx:latest
+  - docker ps
+  - docker inspect host-demo 
 
 

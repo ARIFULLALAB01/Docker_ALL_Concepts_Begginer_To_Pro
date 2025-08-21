@@ -49,6 +49,25 @@
  - CMd
  - EntryPoint
 
+  # Dockefile Brife Discussion: 
+ ** we are USiung the **[text](SpringPerclinc.Md)** each and evrything from thise File Explained
+  # Docker image Push Command:
+
+      docker login
+       - authentication:
+          - username & Password
+      docker tag <local-image-name>:<tag> arifulla/myapp:<tag>
+      docker tag spc:latest arifullalab01/springboot:1.0
+      docker push arifullalab01/springboot:1.0
+
+# Docker image Push To ECR:
+
+docker login
+ - authentication:
+    - AWSCli -- Install
+    - Role - EC2 administartor (IAM - Role -)Attahced
+    - ECR-Registry > push Commands ==>  we follow the the heirachy
+
 11) Volumes        - AbhsihekVeramala
 12) networks       - AbhsihekVeramala
 13) Docker hub Remotee Push

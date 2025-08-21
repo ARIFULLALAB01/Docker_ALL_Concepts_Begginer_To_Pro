@@ -41,6 +41,12 @@ docker container stop apache
 docker container start apache
 docker container rm apache
 
+# Docker image Buit Command:
+
+docker image build -t Spc:1.0 .
+
+docker image build -t Spc:1.0 <Path location Give> (/tmp/hari/Dockerfile)
+
 # To login into running container
 docker container exec -it <name/id> /bin/bash
 
@@ -48,3 +54,27 @@ docker container exec -it <name/id> /bin/bash
 docker container run -d -P --name mycontainer httpd
 
 # Dockefile Brife Discussion: 
+ ** we are USiung the **[text](SpringPerclinc.Md)** each and evrything from thise File Explained
+
+# Docker image Push Command:
+
+docker login
+ - authentication:
+    - username & Password
+docker tag <local-image-name>:<tag> arifulla/myapp:<tag>
+docker tag spc:latest arifullalab01/springboot:1.0
+docker push arifullalab01/springboot:1.0
+
+
+# Docker image Push To ECR:
+
+docker login
+ - authentication:
+    - AWSCli -- Install
+    - Role - EC2 administartor (IAM - Role -)Attahced
+    - ECR-Registry > push Commands ==>  we follow the the heirachy
+
+
+
+
+
