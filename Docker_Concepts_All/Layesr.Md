@@ -1,6 +1,6 @@
 # Docker Layers Concepts: IMP (30/Jun/2025) - Class
 ===============================
-Lets run the simple apline image with sleep 1d as cmd
+ * Lets run the simple apline image with sleep 1d as cmd
   - docker pull alpine
   - docker image ls
   - docker run --name a1 -d alpine:latest sleep 1d
