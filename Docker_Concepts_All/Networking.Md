@@ -36,6 +36,11 @@ Q2: Host is communicating with different containers with different networks. Can
   - apt-get install iputils ping -y
   - apt-get install net-tools -y
   - ping -v
+  
+apt-get update
+ apt-get install -y iputils-ping
+
+
 
 * Create a container with name Logout and Logged into the container check the IP
  - docker ru -d --name logout nginx:latest
@@ -47,6 +52,13 @@ Q2: Host is communicating with different containers with different networks. Can
 
  - docker inspect login
  - docker inspect logout
+
+ **tmux** usecase:
+  ctrl+b "
+
+  ctrl+b uparrow
+  ctrl+b dwonarrow
+
 
 **can i container access to Another Conatiner logged into login container access the ping the logout Container IP**
 
@@ -62,10 +74,43 @@ Q2: Host is communicating with different containers with different networks. Can
  - docker exec -it finance /bin/bash
      - ping to login container check the 
 
+
+apt-get update
+ apt-get install -y iputils-ping
+
+
+## onemore Customer network: 
+docker network create database-network
+docker run -d --name database --network=database-network nginx:latest
+apt-get update
+ apt-get install -y iputils-ping
+
+ ping - 172.17.0.2
+
+
+ docker run -d --name Hari nginx:latest
+ docker run -d --name arif nginx:latest
+ docker run -d --name jhansi nginx:latest
+
+
 * Finally check Default name of **Host_Network** Acess
 
   - docker run -d --name host-demo --network=host nginx:latest
   - docker ps
   - docker inspect host-demo 
+
+
+**Example:**
+arif -----> IPAddress": "172.17.0.5",
+hari ----->  "IPAddress": "172.17.0.4",
+login -----> "IPAddress": "172.17.0.2",
+logout ---->   "IPAddress": "172.17.0.3"
+
+
+
+finace --- > "IPAddress": "172.18.0.2",
+
+databse --> ""IPAddress": "172.19.0.2",
+
 
 

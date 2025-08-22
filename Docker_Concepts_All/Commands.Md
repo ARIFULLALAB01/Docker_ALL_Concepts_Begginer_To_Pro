@@ -15,7 +15,7 @@ docker container run -d -P nginx ===> Random Name Created
 
 docker container run -p 32000:80 -d nginx          ====> Port- Forwarding
 docker container run -P -d nginx                   ====> Random Port taken
-docker container run -d -P --name --webappp1 nginx ====> Custome name
+docker container run -d -P --name webappp1 nginx ====> Custome name
 
 docker image ls
 docker image ls -a
@@ -74,6 +74,8 @@ docker login
     - Role - EC2 administartor (IAM - Role -)Attahced
     - ECR-Registry > push Commands ==>  we follow the the heirachy
 
+
+# Docker networking:
 
 
 

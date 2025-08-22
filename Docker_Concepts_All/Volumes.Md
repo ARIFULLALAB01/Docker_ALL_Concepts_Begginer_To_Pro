@@ -2,8 +2,8 @@
 ======================
 # Volume use cases:
  
-1) Bind mounts
-2) Volumes
+1) Bind mounts  --> /app -- Folder 
+2) Volumes  -- > Comes From Disk
 
 ## Problems:
 
@@ -16,7 +16,7 @@
 ========>
 
 docker volume -v
-docker volume --mount
+docker volume --mount  ==> Verbos
 
 docker volume ls
 docker volume create CSSarif
@@ -32,6 +32,7 @@ docker build .
 docker build -t volumedemo Dockerfile
 docker run -d --mount source=arif target=/app nginx:latest
 
+docker build -t CSSarif Dockerfile
 
 vim Dockerfile
 

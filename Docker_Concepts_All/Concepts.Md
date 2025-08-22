@@ -49,9 +49,10 @@
  - CMd
  - EntryPoint
 
-  # Dockefile Brife Discussion: 
+# Dockefile Brife Discussion: 
  ** we are USiung the **[text](SpringPerclinc.Md)** each and evrything from thise File Explained
-  # Docker image Push Command:
+
+# Docker image Push Command:
 
       docker login
        - authentication:
@@ -65,7 +66,7 @@
 docker login
  - authentication:
     - AWSCli -- Install
-    - Role - EC2 administartor (IAM - Role -)Attahced
+    - Role - EC2 administartor (IAM - Role)Attahced
     - ECR-Registry > push Commands ==>  we follow the the heirachy
 
 11) Volumes        - AbhsihekVeramala
